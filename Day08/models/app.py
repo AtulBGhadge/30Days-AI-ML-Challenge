@@ -412,7 +412,7 @@ if uploaded_file is not None:
                         - Add measurable impact (e.g., “improved inference latency by 35%”).  
                         """)
                 else:
-                    st.success("Great news! Your resume covers the major keywords in this JD.")
+                    st.success("Great news! Your resume covers the major keywords in this Job Dricprion.")
 
                 # Download quick report
                 report_bytes = make_report(category, match_score, matched, missing)

@@ -313,7 +313,7 @@ with st.sidebar:
 st.markdown(
     """
     <div class="hero">
-        <h2 class="headline">AI-Powered Resume Category & JD Match</h2>
+        <h2 class="headline">ML-Powered Resume Screening and Job Alignment</h2>
         <p class="subhead">Fast, accurate, and beautifully presented. Built with Scikit-learn + Streamlit.</p>
     </div>
     """,
@@ -405,7 +405,7 @@ if uploaded_file is not None:
                     st.markdown(
                         """
                         - Weave missing keywords into **projects**, **work experience**, and **skills** truthfully.  
-                        - Use the JD’s wording (where accurate) to improve **ATS** alignment.  
+                        - Use the Job Discription’s wording (where accurate) to improve **ATS** alignment.  
                         - Add measurable impact (e.g., “improved inference latency by 35%”).  
                         """)
                 else:

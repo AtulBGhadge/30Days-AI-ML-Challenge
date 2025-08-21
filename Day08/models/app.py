@@ -8,6 +8,7 @@ from io import BytesIO
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
 from datetime import datetime
+import gdown
 
 
 st.set_page_config(
@@ -123,9 +124,39 @@ def inject_css():
 inject_css()
 
 
-svc_model = pickle.load(open('clf.pkl', 'rb'))
-tfidf = pickle.load(open('tfidf.pkl', 'rb'))
-le = pickle.load(open('encoder.pkl', 'rb'))
+MODEL_DIR = "models"
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+# Google Drive file IDs
+files = {
+    "clf.pkl": "13ctuS4M_Cdu6maLesyjVJKrjo2Tg7Ojf",
+    "tfidf.pkl": "1uc7rAOlmizZS3_V2_CA_0ED-Am8LEbAm",
+    "encoder.pkl": "18X1BfAlOOS77V3uVfHttsEHaiDZy7SXT"
+}
+
+def download_if_missing(file_name, file_id):
+    dest = os.path.join(MODEL_DIR, file_name)
+    if os.path.exists(dest):
+        st.write(f"{file_name} already exists - skipping download.")
+        return dest
+    url = f"https://drive.google.com/uc?id={file_id}"
+    st.write(f"Downloading {file_name} from Google Drive...")
+    gdown.download(url, dest, quiet=False)
+    if not os.path.exists(dest):
+        st.error(f"Failed to download {file_name}.")
+        raise SystemExit
+    st.write(f"Downloaded {file_name} ({os.path.getsize(dest) // 1024} KB).")
+    return dest
+
+# Download required files (only if missing)
+clf_path = download_if_missing("clf.pkl", files["clf.pkl"])
+tfidf_path = download_if_missing("tfidf.pkl", files["tfidf.pkl"])
+encoder_path = download_if_missing("encoder.pkl", files["encoder.pkl"])
+
+# Now load
+svc_model = pickle.load(open(clf_path, "rb"))
+tfidf = pickle.load(open(tfidf_path, "rb"))
+le = pickle.load(open(encoder_path, "rb"))
 
 
 def cleanResume(txt):

@@ -14,12 +14,12 @@ A Machine Learning project that automatically classifies resumes into job catego
 - Highlights missing or overlapping skills to improve candidate readiness.  
 
 **Project Structure:**  
-project/
-│── notebook.ipynb
-│── data/
-│ ├── clf.pkl
-│ ├── tfidf.pkl
-│ └── encoder.pkl
+project/  
+│── notebook.ipynb  
+│── data/  
+│ ├── clf.pkl  
+│ ├── tfidf.pkl  
+│ └── encoder.pkl  
 
 **Impact:**  
 - Helps recruiters quickly filter relevant resumes.  

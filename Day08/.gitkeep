@@ -1,0 +1,26 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+.env/
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore large model files
+*.pkl
+*.h5
+*.pt
+*.joblib
+
+# Ignore large datasets
+*.csv
+*.xlsx
+*.json
+*.zip
+*.tar.gz
+
+# But allow small sample CSVs
+!Day*/data/sample_*.csv

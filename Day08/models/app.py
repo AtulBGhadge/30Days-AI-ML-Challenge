@@ -142,15 +142,12 @@ files = {
 def download_if_missing(file_name, file_id):
     dest = os.path.join(MODEL_DIR, file_name)
     if os.path.exists(dest):
-        st.write(f"{file_name} already exists - skipping download.")
+        # Just skip silently without writing to app
         return dest
     url = f"https://drive.google.com/uc?id={file_id}"
-    st.write(f"Downloading {file_name} from Google Drive...")
-    gdown.download(url, dest, quiet=False)
+    gdown.download(url, dest, quiet=True)  # quiet=True avoids printing
     if not os.path.exists(dest):
-        st.error(f"Failed to download {file_name}.")
-        raise SystemExit
-    st.write(f"Downloaded {file_name} ({os.path.getsize(dest) // 1024} KB).")
+        raise SystemExit(f"Failed to download {file_name}.")
     return dest
 
 # Download required files (only if missing)
@@ -381,9 +378,9 @@ if uploaded_file is not None:
                 if match_score > 75:
                     st.success("🔥 Strong Match! Your resume fits this JD well.")
                 elif match_score > 50:
-                    st.warning("🙂 Moderate Match. Tailor your resume to mirror more JD terminology.")
+                    st.warning("🙂 Moderate Match. Tailor your resume to mirror more Job Discription terminology.")
                 else:
-                    st.error("⚠️ Low Match. Consider adding relevant skills & evidence aligned to this JD.")
+                    st.error("⚠️ Low Match. Consider adding relevant skills & evidence aligned to this Job Discription.")
 
             with c_right:
                 # Extract keywords & intersections

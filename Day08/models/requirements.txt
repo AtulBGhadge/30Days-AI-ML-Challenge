@@ -16,3 +16,4 @@ six
 threadpoolctl
 tzdata
 Werkzeug
+python-docx

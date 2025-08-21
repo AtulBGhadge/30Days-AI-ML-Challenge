@@ -2,6 +2,11 @@
 import streamlit as st
 import pickle
 import docx
+import os
+import pickle
+import gdown
+import streamlit as st
+
 import PyPDF2
 import re
 from io import BytesIO

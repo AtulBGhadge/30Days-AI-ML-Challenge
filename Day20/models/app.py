@@ -34,6 +34,7 @@ import os
 
 @st.cache_resource
 def load_model():
+    model = load_model()
     model_path = os.path.join(os.path.dirname(__file__), "rf_with_title_tfidf.joblib")
     return joblib.load(model_path)
 

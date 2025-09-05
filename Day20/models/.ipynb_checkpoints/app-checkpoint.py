@@ -30,11 +30,14 @@ st.set_page_config(
 # ================================
 # 🔹 LOAD MODEL
 # ================================
+import os
+
 @st.cache_resource
 def load_model():
-    return joblib.load("rf_with_title_tfidf.joblib")
+    model = load_model()
+    model_path = os.path.join(os.path.dirname(__file__), "rf_with_title_tfidf.joblib")
+    return joblib.load(model_path)
 
-model = load_model()
 
 # ================================
 # 🔹 HEADER

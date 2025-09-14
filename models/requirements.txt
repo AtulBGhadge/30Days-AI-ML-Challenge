@@ -1,9 +1,9 @@
 streamlit
 torch
+torchvision
+torchaudio
 transformers
-joblib
-plotly
-pandas
-scikit-learn
+datasets
 fugashi
+ipadic
 unidic-lite

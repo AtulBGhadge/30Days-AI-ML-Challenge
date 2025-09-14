@@ -1,0 +1,9 @@
+streamlit
+torch
+transformers
+joblib
+plotly
+pandas
+scikit-learn
+fugashi
+unidic-lite
